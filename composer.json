@@ -2,7 +2,7 @@
     "name": "aryashreep/music_module",
     "type": "drupal-custom-module",
     "description": "Drupal 8 module for music site.",
-    "homepage": "https://github.com/aryashreep/music_module",
+    "homepage": "https://github.com/aryashreep/musicmodule",
     "license": "GPL-2.0+",
     "authors": [
       {
