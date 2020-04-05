@@ -1,8 +1,8 @@
 {
-    "name": "aryashreep/musicmodule",
+    "name": "aryashreep/latest_artist",
     "type": "drupal-custom-module",
-    "description": "Drupal 8 module for music site.",
-    "homepage": "https://github.com/aryashreep/musicmodule",
+    "description": "Drupal 8 module for latest artist display.",
+    "homepage": "https://github.com/aryashreep/latest_artist",
     "license": "GPL-2.0+",
     "authors": [
       {
