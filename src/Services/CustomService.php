@@ -21,7 +21,7 @@ class CustomService {
   public function getServiceData() {
     //Do something here to get any data.
     $entityQuery = \Drupal::entityQuery('node');
-    $nids = $entityQuery->condition('type', 'artists')
+    $nids = $entityQuery->condition('type', 'artist')
         ->condition('status', 1)
         ->execute();
     $nodes = Node::loadMultiple($nids);    

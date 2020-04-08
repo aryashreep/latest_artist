@@ -1,0 +1,6 @@
+latest_artist.newpage:
+  title: 'Artist'
+  description: 'Link to the Artists listing page'
+  route_name: latest_artist.content
+  weight: 10
+  menu_name: main

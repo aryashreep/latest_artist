@@ -1,0 +1,7 @@
+latest_artist.content:
+  path: '/artists'
+  defaults:
+    _controller: '\Drupal\latest_artist\Controller\ArtistController::content'
+    _title: 'Browse Artists'
+  requirements:
+    _permission: 'access content'
