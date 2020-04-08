@@ -1,4 +1,3 @@
 services:
   latest_artist.custom_services:
     class: Drupal\latest_artist\Services\CustomService
-    arguments: ['@current_user']

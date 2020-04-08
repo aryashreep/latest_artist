@@ -10,36 +10,15 @@ use Drupal\Core\Session\AccountProxyInterface;
  */
 class CustomService {
 
-  private $currentUser;
-  /**
-   * Constructs a new CustomService object.
-   */
-  public function __construct(AccountProxyInterface $currentUser) {
-    $this->currentUser=$currentUser;    
-  }
-
   public function getServiceData() {
     //Do something here to get any data.
     $entityQuery = \Drupal::entityQuery('node');
     $nids = $entityQuery->condition('type', 'artist')
         ->condition('status', 1)
+        ->range(0, 5)
         ->execute();
     $nodes = Node::loadMultiple($nids);    
     return $nodes;
-  }
-
-  /**
-   * Here you can pass your values as $array.
-   */
-  public function postServiceData($array) {
-    //Do something here to post any data.
-  }
-  
-    /**
-   * return the current user
-   */
-  public function whoIsYourOwner() {
-    return $this->currentUser->getDisplayName();
   }
 
 }

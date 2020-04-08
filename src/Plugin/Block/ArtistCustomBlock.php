@@ -10,7 +10,7 @@ use Drupal\Core\Cache\Cache;
  *
  * @Block(
  *  id = "artist_custom_block",
- *  admin_label = @Translation("Music Block"),
+ *  admin_label = @Translation("Artist Block"),
  * )
  */
 class ArtistCustomBlock extends BlockBase {
@@ -19,21 +19,13 @@ class ArtistCustomBlock extends BlockBase {
    * {@inheritdoc}
    */
   public function build() {    
-   $service = \Drupal::service('latest_artist.custom_services');
-   $username=$service->whoIsYourOwner();
-   $nodes=$service->getServiceData();
-    return [      
-      'nodes' => $nodes,
-      'currentuser' => $username,      
+    // Getting all Artist content.
+    $service = \Drupal::service('latest_artist.custom_services');
+    $nodes=$service->getServiceData();
+
+    return [
+      '#theme' => 'popular_artist_block',
+      '#nodes' => $nodes,
     ];
-  }
-  
-  /**
-   * Only when node(s) of type 'artists' are updated. See .module file
-   */
-  public function getCacheTags() {
-    //return Cache::mergeTags(parent::getCacheTags(), ['node_list']);
-    return Cache::mergeTags(parent::getCacheTags(), ['latest_artist_updates']);
-  }
-  
+  }  
 }

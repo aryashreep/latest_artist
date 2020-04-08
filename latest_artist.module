@@ -1,29 +1,17 @@
 <?php
 
-use Drupal\Core\Cache\Cache;  
-use Drupal\node\NodeInterface;
+/**
+ * @file
+ * Contains latest_artist.module
+ */
 
 /**
- * Implements hook_node_presave().
+ * Implements hook_theme()
  */
-function latest_artist_node_presave(NodeInterface $node) {
-  latest_artist_invalidate_node($node);
-}
-
-/**
- * Implements hook_node_presave().
- */
-function latest_artist_node_delete(NodeInterface $node) {
-  latest_artist_invalidate_node($node);
-}
-
-/**
- * Invalidate custom cache associated to artists node.
- */
-function latest_artist_invalidate_node(NodeInterface $node) {  
-  if ($node->getType() == 'artists') {
-  //$tags = ['node_list'];
-  $tags =['latest_artist_updates'];
-  Cache::invalidateTags($tags);
-  }
+function latest_artist_theme($existing, $type, $theme, $path) {
+  return[
+    'popular_artist_block' => [
+      'variables' => ['data' => NULL, 'nodes' => NULL],
+    ],
+  ];
 }
