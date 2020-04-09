@@ -24,7 +24,7 @@ class ArtistController extends ControllerBase {
     // Select the nodes we want to show. i.e. 3 published articles.
     $nids = \Drupal::entityQuery('node')
     ->condition('type', 'artist')
-    ->condition('status', 1)
+    ->condition('status', NODE_PUBLISHED)
     ->sort('created', 'DESC')
     ->pager(5)
     ->execute();

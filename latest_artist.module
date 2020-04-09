@@ -9,9 +9,13 @@
  * Implements hook_theme()
  */
 function latest_artist_theme($existing, $type, $theme, $path) {
-  return[
+  $blocks_theme = array(
     'popular_artist_block' => [
       'variables' => ['data' => NULL, 'nodes' => NULL],
     ],
-  ];
+    'artist_album_block' => [
+      'variables' => ['data' => NULL, 'nodes' => NULL],
+    ]
+  );
+  return $blocks_theme;
 }

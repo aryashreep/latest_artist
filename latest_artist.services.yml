@@ -1,3 +1,5 @@
 services:
   latest_artist.custom_services:
     class: Drupal\latest_artist\Services\CustomService
+  latest_artist.artist_album_services:
+    class: Drupal\latest_artist\Services\ArtistAlbumServices
