@@ -17,7 +17,7 @@ jobs:
     - uses: actions/checkout@v2
     with:
       fetch-depth: 1
-
+      
     - name: Composer version
       run: composer -V
 
@@ -47,8 +47,7 @@ jobs:
  
     - name: Manually Set Installed Paths
       run: phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
-	  
-	  
+
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
