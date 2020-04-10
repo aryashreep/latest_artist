@@ -38,7 +38,7 @@ jobs:
       run: composer config home
 
     - name: To make the phpcs and phpcbf commands available globally
-      run: set PATH $PATH $HOME/.composer/vendor/bin
+      run: ./vendor/bin/phpcs -i
 
     - name: Verify Registered Standards
       run: phpcs -i
