@@ -19,29 +19,31 @@ jobs:
     - name: Composer version
       run: composer -V
 
-    - name: Install Coder
-      run: composer global require drupal/coder:^8.3.1
-
-    - name: Install Codesniffer
-      run: composer global require "squizlabs/php_codesniffer=*"
-
     - name: Validate composer.json and composer.lock
       run: composer validate
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Install Coder
+      run: composer global require drupal/coder:^8.3.1
+
+    - name: Install Codesniffer
+      run: composer global require dealerdirect/phpcodesniffer-composer-installer
+
     - name: List all of the available packages
       run: composer global show -P
 
     - name: Composer home directory
       run: composer config home
+
+    - name: Verify Registered Standards
+      run: phpcs -i
  
     - name: Manually Set Installed Paths
       run: phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer
 
-    - name: Verify Registered Standards
-      run: phpcs -i	
+
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
