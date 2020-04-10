@@ -10,12 +10,24 @@ jobs:
   code-standards:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php_version: ['7.3']
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out code 
+      uses: actions/checkout@v2
       with:
         fetch-depth: 1
-      
+
+    - name: Set up PHP ${{ matrix.php_version }}
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php_version }}
+
+    - name: Install dependencies
+      run: composer install --dev
+
     - name: Composer version
       run: composer -V
 
@@ -24,12 +36,6 @@ jobs:
 
     - name: Install Codesniffer
       run: composer global require dealerdirect/phpcodesniffer-composer-installer
-
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: List all of the available packages
       run: composer global show -P
