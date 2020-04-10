@@ -23,7 +23,7 @@ jobs:
       run: composer global require drupal/coder:^8.3.1
 
     - name: Install Codesniffer
-      run: composer global require dealerdirect/phpcodesniffer-composer-installer
+      run: composer global require "squizlabs/php_codesniffer=*"
 
     - name: Validate composer.json and composer.lock
       run: composer validate
