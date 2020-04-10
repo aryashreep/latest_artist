@@ -19,17 +19,17 @@ jobs:
     - name: Composer version
       run: composer -V
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate
-
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-
     - name: Install Coder
       run: composer global require drupal/coder:^8.3.1
 
     - name: Install Codesniffer
       run: composer global require dealerdirect/phpcodesniffer-composer-installer
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: List all of the available packages
       run: composer global show -P
@@ -38,7 +38,7 @@ jobs:
       run: composer config home
 
     - name: To make the phpcs and phpcbf commands available globally
-      run: export PATH="$PATH:$HOME/.composer/vendor/bin"
+      run: set PATH $PATH $HOME/.composer/vendor/bin
 
     - name: Verify Registered Standards
       run: phpcs -i
