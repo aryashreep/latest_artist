@@ -47,7 +47,7 @@ jobs:
       run: ~/.composer/vendor/bin/phpcs -i
 
     - name: To check the path
-      run: ls ~/.composer/vendor/drupal/
+      run: ls ~/.composer/vendor/drupal/coder/
 
     - name: Manually Set Installed Paths
       run: phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer
