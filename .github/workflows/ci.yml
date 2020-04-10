@@ -1,4 +1,4 @@
-name: PHP Composer
+name: D8 Code Review
 
 on:
   push:
@@ -7,12 +7,25 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  code-standards:
 
     runs-on: ubuntu-latest
+    container:
+      image: juampynr/drupal8ci:latest
 
     steps:
     - uses: actions/checkout@v2
+	  with:
+        fetch-depth: 1
+
+    - name: Composer version
+      run: composer -V
+	  
+    - name: Install Coder
+      run: composer global require drupal/coder:^8.3.1
+
+    - name: Install Codesniffer
+      run: composer global require dealerdirect/phpcodesniffer-composer-installer
 
     - name: Validate composer.json and composer.lock
       run: composer validate
@@ -20,6 +33,22 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: List all of the available packages
+      run: composer global show -P
+
+    - name: Composer home directory
+      run: composer config home
+
+    - name: Path of phpcs
+      run: which phpcs
+
+	- name: Verify Registered Standards
+	  run: phpcs -i	
+ 
+    - name: Manually Set Installed Paths
+      run: phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
+	  
+	  
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
