@@ -10,13 +10,11 @@ jobs:
   code-standards:
 
     runs-on: ubuntu-latest
-    container:
-      image: juampynr/drupal8ci:latest
 
     steps:
     - uses: actions/checkout@v2
-    with:
-      fetch-depth: 1
+      with:
+        fetch-depth: 1
       
     - name: Composer version
       run: composer -V
