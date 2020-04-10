@@ -36,12 +36,12 @@ jobs:
 
     - name: Composer home directory
       run: composer config home
+ 
+    - name: Manually Set Installed Paths
+      run: phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer
 
     - name: Verify Registered Standards
       run: phpcs -i	
- 
-    - name: Manually Set Installed Paths
-      run: phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
