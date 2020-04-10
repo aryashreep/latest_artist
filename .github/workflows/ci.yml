@@ -41,9 +41,7 @@ jobs:
       run: composer global show -P
 
     - name: Composer home directory
-      run: |
-        composer config home
-        which phpcs
+      run: which phpcs
 
     - name: To make the phpcs and phpcbf commands available globally
       run: ~/.composer/vendor/bin/phpcs -i
