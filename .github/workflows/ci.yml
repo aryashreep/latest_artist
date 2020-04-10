@@ -46,16 +46,10 @@ jobs:
     - name: Verify Registered Standards
       run: ~/.composer/vendor/bin/phpcs -i
 
-    - name: To check the path
-      run: ls ~/.composer/vendor/drupal/coder/
-
     - name: Manually Set Installed Paths
-      run: phpcs --config-set installed_paths /home/runner/.composer/vendor/drupal/coder/coder_sniffer
-
-
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
+      run: ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
+  
+    - name: Code review initiated
+      run: |
+        ~/.composer/vendor/bin/phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml ./
+        ~/.composer/vendor/bin/phpcs --standard=DrupalPractice --php,module,inc,install,test,profile,theme,css,info,txt,md,yml ./    
