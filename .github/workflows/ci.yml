@@ -37,6 +37,9 @@ jobs:
     - name: Composer home directory
       run: composer config home
 
+    - name: To make the phpcs and phpcbf commands available globally
+      run: export PATH="$PATH:$HOME/.composer/vendor/bin"
+
     - name: Verify Registered Standards
       run: phpcs -i
  
